@@ -13,6 +13,7 @@ os.makedirs(SAVED_MODELS_DIR, exist_ok=True)
 
 def main():
 
+    
     # 1. tải scaler
     scaler_path = os.path.join(PROCESSED_DIR, "minmax_scaler.pkl")
     scaler = joblib.load(scaler_path)
@@ -60,7 +61,7 @@ def main():
     joblib.dump(model_base, os.path.join(SAVED_MODELS_DIR, "model_baseline.pkl"))
     print(f" đã lưu model_baseline.pkl (thời gian: {time.time() - t0:.2f}s)")
 
-    # 5. Huấn luyện và Lưu mô hình SMOTE
+    # 5. train smote
     print("\ntrain smote...")
     t1 = time.time()
     model_smote = lgb.LGBMClassifier(**lgbm_params)
